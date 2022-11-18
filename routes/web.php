@@ -18,4 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// GET METODA
 Route::get('calculator', [CalculatorController::class, 'index']);
+
+// POST METODA
+Route::post('calculator', [CalculatorController::class, 'calculate']);
