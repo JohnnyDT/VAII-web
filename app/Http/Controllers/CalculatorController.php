@@ -10,17 +10,24 @@ class CalculatorController extends Controller
 {
     public function index(Calculator $calculator): View
     {
+        return view('calculator', [
+            'operations' => $calculator->getOperations(),
+        ]);
+    }
+
+    public function calculate(Calculator $calculator): View
+    {
         $a = request()->input('a');
         $b = request()->input('b');
-
+        
         $operation = request()->input('operation');
         $result = $calculator->calculate($operation, $a, $b);
-        
+
         return view('calculator', [
             'operations' => $calculator->getOperations(),
             'result' => $result,
             'a' => $a,
-            'b' => $b
+            'b' => $b,
         ]);
     }
 }
